@@ -1,6 +1,8 @@
+import { SignInButton, SignOutButton } from '@/components/buttons'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import AuthCheck from './AuthCheck'
 
 export default function NavMenu() {
   return (
@@ -10,15 +12,21 @@ export default function NavMenu() {
            <Image src='/next.svg' width={200} height={30} alt='social logo' />
         </Link>
 
-        <ul className='flex items-center justify-between max-w-3xl gap-4'>
-          <li>
+        <ul className='flex items-center justify-between max-w-3xl gap-8'>
+          
+          <li className='hover-transition'>
+            <Link  href='/users'>Users</Link>
+          </li>
+          <li className='hover-transition'>
             <Link href='/about'>About</Link>
           </li>
-          <li>
-            <Link href='/posts'>Posts</Link>
+          <li className='hover-transition'>
+            <SignInButton />
           </li>
-          <li>
-            <Link href='/users'>Users</Link>
+          <li className=''>
+            <AuthCheck>
+            <SignOutButton />
+          </AuthCheck>
           </li>
         </ul>
       </div>
