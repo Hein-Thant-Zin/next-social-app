@@ -6,7 +6,7 @@ import AuthCheck from './AuthCheck'
 
 export default function NavMenu() {
   return (
-    <nav className='p-4 py-2 border-b'>
+    <nav className='p-4 py-2 border-b shadow'>
       <div className="container flex items-center justify-between mx-auto">
         <Link href='/'>
            <Image src='/next.svg' width={200} height={30} alt='social logo' />
