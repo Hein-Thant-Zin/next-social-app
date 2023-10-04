@@ -11,7 +11,7 @@ export  function SignInButton() {
     if (status === 'authenticated') {
             return (
                 <Link href='/dashboard'>
-                    <Image className="border rounded border-x-neutral-800" src={session.user?.image} alt={session.user.username} width={32} height={32} />
+                    <Image className="border rounded border-x-neutral-800" src={session.user?.image} alt='user image' width={32} height={32} />
             </Link>
      )
     }

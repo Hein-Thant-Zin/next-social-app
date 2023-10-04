@@ -1,6 +1,8 @@
 import React from 'react'
 
-export default function Users() {
+export default async function Users() {
+  const users = await prisma.user.findMany();
+  console.log({users});
   return (
     <main>
       Home page of users

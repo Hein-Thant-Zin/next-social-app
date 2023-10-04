@@ -23,10 +23,9 @@ export default async function Home() {
 
           <ul className='max-w-3xl mx-auto mt-2 space-y-4'>
               {posts.map((post) => (
-                <article className='p-2 text-center border rounded shadow hover:bg-slate-100' key={post.slug}>
+                <article className='p-2 text-center transition border rounded shadow hover:bg-slate-100' key={post.slug}>
                   <Link  href={`/posts/${post.slug}`}><h3 className=''>{post.title}</h3>
-                 </Link>
-               
+                 </Link>  
               </article>
             ))}
           </ul>
