@@ -7,9 +7,25 @@ export default  function UserProfile() {
     const { data: session, status } = useSession(authOptions);
     if (status === 'loading') return null;
     const user = session.user;
-    console.log({user});
-    function handleSubmit() {
+    console.log({ user });
+    
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const body = {
+            name: formData.get('name'),
+            bio: formData.get('bio')
+        };
+        console.log(body);
         
+    // const res =  await fetch('/api/user', {
+    //        method: 'PUT',
+    //        body: JSON.stringify(body),
+    //        headers: {
+    //            'Content-Type':'application/json',
+    //        },        
+    // })
+    //     await res.json();
     }
 
   return (
