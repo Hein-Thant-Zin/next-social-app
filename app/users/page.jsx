@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React from 'react'
 
 export default async function Users() {
+  // throw new Error('error');
   const users = await prisma.user.findMany();
   // console.log({users});
   return (

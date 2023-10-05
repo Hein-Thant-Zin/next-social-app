@@ -12,7 +12,7 @@ export  function SignInButton() {
             return (
                 <Link href='/dashboard'>
                     <Image className="border rounded border-x-neutral-800" src={session.user?.image} alt='user image' width={32} height={32} />
-            </Link>
+              </Link>
      )
     }
     return <button onClick={()=> signIn()}>Sign In</button>
