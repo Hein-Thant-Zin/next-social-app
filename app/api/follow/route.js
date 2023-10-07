@@ -5,11 +5,18 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const session = await getServerSession(authOptions);
-  const currentUserId = session?.user?.id;
+  const currentUserEmail = session?.user?.email;
+  const currentUserId = await prisma.user
+    .findUnique({
+      where: {
+        email: currentUserEmail,
+      },
+    })
+    .then((user) => user.id);
 
   const { targetUserId } = await req.json();
 
-  console.log({ currentUserId, targetUserId });
+  console.log({ currentUserEmail, targetUserId });
 
   const record = await prisma.follows.create({
     data: {
@@ -21,16 +28,17 @@ export async function POST(req) {
 }
 export async function DELETE(req) {
   const session = await getServerSession(authOptions);
-  const currentUserId = session?.user?.id;
+  const currentUserEmail = session?.user?.email;
 
   //another method
   const targetUserId = req.nextUrl.searchParams.get("targetUserId");
-  await prisma.follows.delete({
+  const record = await prisma.follows.delete({
     where: {
       followerId_followingId: {
-        followerId: currentUserId,
+        followerId: currentUserEmail,
         followingId: targetUserId,
       },
     },
   });
+  return NextResponse.json(record);
 }
