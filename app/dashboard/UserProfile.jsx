@@ -5,29 +5,34 @@ import { useSession } from 'next-auth/react';
 
 export default  function UserProfile() {
     const { data: session, status } = useSession(authOptions);
-    if (status === 'loading') return null;
-    const user = session.user;
-    console.log({ user });
+    
+ 
+    // console.log(session);
     
     async function handleSubmit(e) {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const body = {
-            name: formData.get('name'),
-            bio: formData.get('bio')
-        };
-        console.log(body);
-        
-    // const res =  await fetch('/api/user', {
-    //        method: 'PUT',
-    //        body: JSON.stringify(body),
-    //        headers: {
-    //            'Content-Type':'application/json',
-    //        },        
-    // })
-    //     await res.json();
-    }
+       
+    e.preventDefault();
 
+    const formData = new FormData(e.target);
+
+    const body = {
+      name: formData.get('name'),
+      bio: formData.get('bio'),
+    };
+
+    const res = await fetch('/api/user', {
+      method: 'PUT',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+      // console.log(res);
+
+      await res.json();
+  };
+  if (status === 'loading') return null;
+  const user = session.user;
   return (
       <div className='max-w-xl p-5 mx-auto mt-8 border rounded-md shadow'>
           <h2 className='my-1 text-lg font-semibold text-center'>Update your profile</h2>

@@ -1,14 +1,13 @@
-'use client'
 import { getServerSession } from "next-auth";
 import UserProfile from "./UserProfile";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from 'next/navigation';
 import { useSession } from "next-auth/react";
 
-export default function UserDashboard() {
+export default async function UserDashboard() {
    
-const { data: session, status } = useSession(authOptions);
-  // console.log({res});
+const session = await getServerSession(authOptions);
+  // console.log(session);
   if (!session) {
     redirect ('api/auth/signin')
   }
