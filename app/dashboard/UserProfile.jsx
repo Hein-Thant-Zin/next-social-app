@@ -33,6 +33,7 @@ export default  function UserProfile() {
   };
   if (status === 'loading') return null;
   const user = session.user;
+  // const usr = await prisma.user.findMany();
   return (
       <div className='max-w-xl p-5 mx-auto mt-8 border rounded-md shadow'>
           <h2 className='my-1 text-lg font-semibold text-center'>Update your profile</h2>
