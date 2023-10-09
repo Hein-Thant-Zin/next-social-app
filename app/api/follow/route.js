@@ -16,7 +16,7 @@ export async function POST(req) {
 
   const { targetUserId } = await req.json();
 
-  console.log({ currentUserEmail, targetUserId });
+  // console.log({ currentUserEmail, targetUserId });
 
   const record = await prisma.follows.create({
     data: {

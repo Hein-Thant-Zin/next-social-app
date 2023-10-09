@@ -16,23 +16,18 @@ export default function FollowClient({ isFollowing, targetUserId }) {
                'Content-Type': 'appication/json'
            }
        });
-       console.log(res);
+    //    console.log(res);
 
        setIsFetching(false);
 
        //only rendering backend state without interferencing frontend
-    //    router.refresh();
+       router.refresh();
     }
     async function unfollow() {
         setIsFetching(true);
 
         await fetch(`/api/follow?targetUserId=${targetUserId}`, {
             method: 'DELETE',
-            // body: JSON.stringify({ targetUserId }),
-        //    headers: {
-        //        'Content-Type': 'appication/json'
-        //    }
-            
         })
 
         setIsFetching(false);
