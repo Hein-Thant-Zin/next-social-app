@@ -11,10 +11,13 @@ export default function UserCard({ user }) {
             <Image className='mx-auto mt-2 rounded-sm ' src={image}  width={80} height={80} alt={name} />
             {/* <div className='items-center'><img src={ user.image } alt={user.name} width={50} height={50} /></div> */}
           <div>
-              <h3 className='m-2'>{name}</h3>
-              <p>{age}</p>
-         </div>
-    </article>
+              <h3 className='mt-2 text-sm'>{name}</h3>
+            <p className='text-sm'>{age} years</p>
+            
+          </div>
+           <p>Edit</p>
+        </article>
+       
         </Link>
   )
 }
