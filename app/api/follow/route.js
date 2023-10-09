@@ -29,13 +29,19 @@ export async function POST(req) {
 export async function DELETE(req) {
   const session = await getServerSession(authOptions);
   const currentUserEmail = session?.user?.email;
-
+  const currentUserId = await prisma.user
+    .findUnique({
+      where: {
+        email: currentUserEmail,
+      },
+    })
+    .then((user) => user.id);
   //another method
   const targetUserId = req.nextUrl.searchParams.get("targetUserId");
   const record = await prisma.follows.delete({
     where: {
       followerId_followingId: {
-        followerId: currentUserEmail,
+        followerId: currentUserId,
         followingId: targetUserId,
       },
     },

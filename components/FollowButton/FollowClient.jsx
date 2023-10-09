@@ -26,15 +26,17 @@ export default function FollowClient({ isFollowing, targetUserId }) {
     async function unfollow() {
         setIsFetching(true);
 
-        const res = await fetch('/api/unfollow', {
-            method: 'POST',
-            body: JSON.stringify({ targetUserId }),
-           headers: {
-               'Content-Type': 'appication/json'
-           }
+        await fetch(`/api/follow?targetUserId=${targetUserId}`, {
+            method: 'DELETE',
+            // body: JSON.stringify({ targetUserId }),
+        //    headers: {
+        //        'Content-Type': 'appication/json'
+        //    }
             
         })
-        
+
+        setIsFetching(false);
+        router.refresh();
     }
   if (isFollowing) {
         return <button className='follow-btn' onClick={unfollow}>{ isFetching ? '...' : 'Unfollow' }</button>
