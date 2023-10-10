@@ -67,3 +67,10 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model post {
+  id    String @id @default(cuid())
+  slug  String @unique
+  title String
+  body  String
+}

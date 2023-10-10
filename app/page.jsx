@@ -1,19 +1,15 @@
 export const dyanamic = 'force-static';
 export const revalidate = 360;
 import AuthCheck from '@/components/AuthCheck';
+import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
-  const posts = await fetch('http://localhost:3000/api/posts').then((res) => res.json());
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  const posts = await prisma.post.findMany();   
 }
 
 export default async function Home() {
-  const posts = await fetch('http://localhost:3000/api/posts', {
-    cache : 'no-cache'
-  }).then((res) => res.json());
+  const posts = await prisma.post.findMany();
 
   return (
     <main className='container mx-auto my-2'>

@@ -1,8 +1,15 @@
+import { prisma } from "@/lib/prisma";
+
 export const revalidate = 10;
 export default async function PostsDetails({params}) {
-    const posts = await fetch('http://localhost:3000/api/posts').then((res) => res.json());
+    // const posts = await fetch('http://localhost:3000/api/posts').then((res) => res.json());
     
-    const post = posts.find((item) => item.slug === params.slug);
+  // const post = posts.find((item) => item.slug === params.slug);
+  const post = await prisma.post.findUnique({
+    where: {
+      slug : params.slug
+    }
+  })
     // console.log(post);
   return (
     <section>
