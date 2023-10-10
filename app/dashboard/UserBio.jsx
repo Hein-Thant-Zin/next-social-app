@@ -7,6 +7,6 @@ export default async function UserBio() {
       },
     });
   const userBio = user.bio;
-  // console.log(userBio);
+  console.log(userBio);
     return userBio;
 }
