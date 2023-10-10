@@ -44,7 +44,7 @@ export default  function UserProfile() {
               </div>
                 <div className='mt-6'>
                    <label className='block' htmlFor="bio">Bio</label>
-                  <textarea className='w-full p-2 pt-1 border rounded-md shadow-sm focus:border-slate-400 outline-0'  name='bio' id="bio" />
+                  <textarea className='w-full p-2 pt-1 border rounded-md shadow-sm focus:border-slate-400 outline-0'  name='bio' id="bio" defaultValue={user?.bio ?? ''}/>
               </div>
               <button  className='px-4 mt-4 rounded shadow bg-slate-300' type='submit'>Save</button>
       </form>
