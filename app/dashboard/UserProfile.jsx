@@ -3,6 +3,7 @@ import React from 'react'
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { useSession } from 'next-auth/react';
 import UserBio from './UserBio';
+import { redirect } from 'next/navigation';
 
 export default  function UserProfile() {
     const { data: session, status } = useSession(authOptions);
@@ -31,6 +32,7 @@ export default  function UserProfile() {
       // console.log(res);
 
       await res.json();
+    //  redirect('/');
   };
   if (status === 'loading') return null;
   const user = session.user;

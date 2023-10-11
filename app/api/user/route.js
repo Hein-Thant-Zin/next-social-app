@@ -3,6 +3,7 @@ import { authOptions } from "../auth/[...nextauth]/route";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { getSession, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export async function PUT(req) {
   const session = await prisma.user.findMany();
