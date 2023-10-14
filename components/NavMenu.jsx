@@ -1,12 +1,14 @@
+'use client'
 import { SignInButton, SignOutButton } from '@/components/buttons'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import AuthCheck from './AuthCheck'
+import {motion} from 'framer-motion'
 
 export default function NavMenu() {
   return (
-    <nav className='p-4 py-2 border-b shadow'>
+    <motion.nav initial={{ opacity: 0 , y : -10 }} animate={{ opacity : 1 ,y : 0}} transition={{ duration : 2 }} className='p-4 py-2 border-b shadow'>
       <div className="container flex items-center justify-between mx-auto">
         <Link href='/'>
            <Image src='/next.svg' width={200} height={30} alt='social logo' />
@@ -30,6 +32,6 @@ export default function NavMenu() {
           </li>
         </ul>
       </div>
-    </nav>
+    </motion.nav>
   )
 }

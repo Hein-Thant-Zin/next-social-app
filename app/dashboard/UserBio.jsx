@@ -5,12 +5,8 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 export default async function UserBio() {
    const session = await getServerSession(authOptions);
     const currentUserEmail = session?.user?.email;
-    const user = await prisma.user.findUnique({
-        where: {
-        email: currentUserEmail,
-      },
-    }).then((user)=>user.bio);
-  const userBio = user.bio;
-  console.log(userBio);
-  return userBio;
+    const userAge = await prisma.user.findMany().then((user)=>user.age);
+  // const userBio = user.age;
+  console.log(userAge);
+  return userAge;
 }

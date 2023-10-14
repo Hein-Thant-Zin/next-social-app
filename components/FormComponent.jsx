@@ -18,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { useEffect } from 'react';
+import UserBio from '@/app/dashboard/UserBio';
 
 
 export default function FormComponent() {
@@ -62,7 +63,7 @@ export default function FormComponent() {
         
         <div className='mt-3'>
                   <label className='p-2 mr-10' htmlFor="age">Age</label>
-                  <input className='p-2 border rounded' {...register('age', {
+                  <input defaultValue={<UserBio />} className='p-2 border rounded' {...register('age', {
                       required: true,
                     min: {
                       value: 18,
@@ -74,7 +75,7 @@ export default function FormComponent() {
                       }
                   })} type="number" name='age' />
         </div>
-        <div className='pt-1'>{errors.name && <span className='ml-10 text-red-600'>{ errors.age.message }</span>}</div>
+        <div className='pt-1'>{errors.name && <span className='ml-10 text-red-600'>{ errors.age.message ?? 'This field is required' }</span>}</div>
 
         
         <div className="flex justify-center mt-3">

@@ -39,6 +39,8 @@ export default  function UserProfile() {
   };
   if (status === 'loading') return null;
   const user = session.user;
+
+  const usr = prisma.post.findMany()
   return (
       <div className='max-w-xl p-5 mx-auto mt-8 border rounded-md shadow'>
           <h2 className='my-1 text-lg font-semibold text-center'>Update your profile</h2>
@@ -53,7 +55,7 @@ export default  function UserProfile() {
         </div>
         <div className='mt-6'>
                    <label className='block' htmlFor="age">Age</label>
-                  <input className='w-full p-2 pt-1 border rounded-md shadow-sm focus:border-slate-400 outline-0'  name='age' id="age" defaultValue={user?.age ?? ''}/>
+                  <input className='w-full p-2 pt-1 border rounded-md shadow-sm focus:border-slate-400 outline-0'  name='age' id="age" defaultValue={ user?.age ?? '' } />
               </div>
               <Button variant="secondary" className='mt-4 rounded shadow bg-slate-500 hover:bg-slate-600' type='submit'>Save</Button>
       </form>
