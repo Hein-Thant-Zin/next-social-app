@@ -18,9 +18,7 @@ export default async function Home() {
     <main className='container mx-auto my-2'>
       <section className='mx-auto'>
         <div className="container mx-auto text-center">
-          <FadeIn />
-
-          
+          <FadeIn />   
             <SlideAnimation posts={ posts } />
           <AuthCheck />
         </div>
