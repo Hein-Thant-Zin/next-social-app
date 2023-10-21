@@ -74,3 +74,8 @@ model post {
   title String
   body  String
 }
+
+// model categories {
+//   id   String @id @default(cuid())
+//   name String @unique 
+// }
