@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import NavMenu from "@/components/NavMenu";
 import "./globals.css";
 import AuthProvider from "./AuthProvider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AuthProvider>
+    <ClerkProvider>
       <html lang="en">
         <head>
           <link rel="icon" href="/favicon.ico" />
@@ -22,6 +23,6 @@ export default function RootLayout({ children }) {
           {children}
         </body>
       </html>
-    </AuthProvider>
+    </ClerkProvider>
   );
 }
